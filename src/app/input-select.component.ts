@@ -6,16 +6,16 @@ import { QuestionBase } from './question-base';
 @Component({
   selector: 'app-input-select',
   template: `
-  <select
-  [id]="question.key"
-  [formGroup]="getControlContainer()"
-  [formControlName]="question.key"
->
-  <option *ngFor="let opt of question.options" [value]="opt.key">
-    {{ opt.value }}
-  </option>
-</select>
-
+  <ng-container [formGroup]="getControlContainer()">
+      <select
+      [id]="question.key"      
+      [formControlName]="question.key"
+    >
+      <option *ngFor="let opt of question.options" [value]="opt.key">
+        {{ opt.value }}
+      </option>
+    </select>
+  </ng-container>
 `,
 })
 export class InputSelectComponent {

@@ -18,7 +18,7 @@ import { QuestionBase } from './question-base';
     
     <app-input-select
     *ngSwitchCase="'dropdown'"
-     [question]="question"
+    [question]="question"
     [formGroup]="form"
     ></app-input-select>
     

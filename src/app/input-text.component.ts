@@ -6,13 +6,14 @@ import { QuestionBase } from './question-base';
 @Component({
   selector: 'app-input-text',
   template: `
+  <ng-container [formGroup]="getControlContainer()">
   <label [attr.for]="question.key">{{ question.label }}</label>
-  <input
-    [formGroup]="getControlContainer()"
-    [formControlName]="question.key"
-    [id]="question.key"
-    [type]="question.type"
-  />
+    <input   
+      [formControlName]="question.key"
+      [id]="question.key"
+      [type]="question.type"
+    />
+  </ng-container>  
 `,
 })
 export class InputTextComponent {
