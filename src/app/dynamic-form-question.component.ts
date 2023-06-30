@@ -7,25 +7,21 @@ import { QuestionBase } from './question-base';
   selector: 'app-question',
   template: `
  <div [formGroup]="form">
-  <label [attr.for]="question.key">{{ question.label }}</label>
+
 
   <div [ngSwitch]="question.controlType">
-    <input
-      *ngSwitchCase="'textbox'"
-      [formControlName]="question.key"
-      [id]="question.key"
-      [type]="question.type"
-    />
-
-    <select
-      [id]="question.key"
-      *ngSwitchCase="'dropdown'"
-      [formControlName]="question.key"
-    >
-      <option *ngFor="let opt of question.options" [value]="opt.key">
-        {{ opt.value }}
-      </option>
-    </select>
+    <app-input-text
+    *ngSwitchCase="'textbox'"
+    [formGroup]="form"
+    [question]="question"
+    ></app-input-text>
+    
+    <app-input-select
+    *ngSwitchCase="'dropdown'"
+     [question]="question"
+    [formGroup]="form"
+    ></app-input-select>
+    
   </div>
 
   <div class="errorMessage" *ngIf="!isValid">
